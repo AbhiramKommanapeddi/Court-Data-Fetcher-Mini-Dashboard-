@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Case Result</h2>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% elif data %}
+            <p><strong>Petitioner:</strong> {{ data.petitioner }}</p>
+            <p><strong>Respondent:</strong> {{ data.respondent }}</p>
+            <p><strong>Filing Date:</strong> {{ data.filing_date }}</p>
+            <p><strong>Next Hearing:</strong> {{ data.next_hearing }}</p>
+            <p><a href="{{ data.pdf_link }}" target="_blank">Download Latest Order</a></p>
+        {% else %}
+            <p>No data available.</p>
+        {% endif %}
+        <a href="/">🔙 Search again</a>
+    </div>
+</body>
+</html>
